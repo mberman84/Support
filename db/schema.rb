@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111120211955) do
+ActiveRecord::Schema.define(:version => 20111120225920) do
+
+  create_table "apps", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "version"
+    t.string   "platform"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "publishers", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "email"
+    t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
