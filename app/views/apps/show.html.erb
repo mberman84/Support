@@ -1,5 +1,9 @@
 <p>This app's name is <%= @app.name %>.</p>
 
+<% @app.issues.each do |issue| %>
+<li><%= link_to issue.subject, app_issue_path(issue.app, issue) %></li>
+<% end %>
+
+<br />
 <%= link_to "Home", root_path %> | 
-<%= link_to "Issues", issues_path %> |
 <%= link_to "Apps", apps_path %>

@@ -3,11 +3,13 @@ Support::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   get "secret" => "home#secret", :as => "secret"
+  get "issues" => "issues#index", :as => "issues"
   
   resources :users
   resources :sessions
-  resources :issues
-  resources :apps
+  resources :apps do
+    resources :issues
+  end
   
   root :to => "home#index"
 
