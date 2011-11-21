@@ -7,6 +7,7 @@ Support::Application.routes.draw do
   resources :users
   resources :sessions
   resources :issues
+  resources :apps
   
   root :to => "home#index"
 
