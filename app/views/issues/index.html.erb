@@ -1,0 +1,8 @@
+<h2>Issues</h2>
+<ul>
+	<% @issues.each do |issue| %>
+	<li><%= link_to issue.subject, issue %></li>
+	<% end %>
+</ul>
+
+<%= link_to "Home", root_path %> | <%= link_to "Users", users_path %>
