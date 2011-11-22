@@ -1,13 +1,6 @@
 class IssuesController < ApplicationController
   def index
-    @app_id = params[:app_id]
-    if !@app_id.nil?
-      @all_index = true
-      @issues = Issue.where(:app_id => params[:app_id])
-    else
-      @all_index = false
-      @issues = Issue.limit(10)
-    end
+    @issues = Issue.limit(10)
   end
   
   def show
