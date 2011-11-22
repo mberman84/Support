@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
   def index
     @app_id = params[:app_id]
-    if !params[:app_id].blank?
+    if !@app_id.nil?
       @all_index = true
       @issues = Issue.where(:app_id => params[:app_id])
     else
