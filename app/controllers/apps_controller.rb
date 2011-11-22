@@ -20,6 +20,6 @@ class AppsController < ApplicationController
   
   def new
     @app = App.new
-    @title = "New Events"
+    @title = "New App"
   end
 end

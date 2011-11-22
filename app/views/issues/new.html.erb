@@ -1,5 +1,5 @@
-<h1>Add your app</h1>
-<%= form_for(@app) do |f| %>
+<h1>Add an issue</h1>
+<%= form_for([@app, @issue]) do |f| %>
 	<%= render 'fields', :f => f %>
 	<div class="actions">
 		<%= f.submit "Submit" %>
