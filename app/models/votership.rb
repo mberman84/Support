@@ -1,4 +1,4 @@
-class UserIssue < ActiveRecord::Base
+class Votership < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
 end
