@@ -12,5 +12,5 @@
 </div>
 <div class="field">
 	<%= f.label :platform %><br />
-	<%= f.text_field :platform %>
+	<%= select(:app, :platform, App::PLATFORM, {:include_blank => true}) %>
 </div>

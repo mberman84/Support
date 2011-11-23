@@ -5,10 +5,10 @@ class Issue < ActiveRecord::Base
   
   STATUS = ['Open', 'Closed']
   
-  validates :subject, :presense => true,
+  validates :subject, :presence => true,
                       :length => { :maximum => 50 }
   validates :description, :presence => true,
                           :length => { :maximum => 200 }
-  validates :type, :presense => true
-  validates :status, :presense => true
+  validates :type, :presence => true
+  validates :status, :presence => true
 end
