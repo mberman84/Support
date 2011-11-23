@@ -18,7 +18,15 @@ class Issue < ActiveRecord::Base
   validates :status, :presence => true
   
   def cast_vote_up!(user_id, direction)
-    voterships.create!(:issue_id => self.id, :user_id   => user_id,
-                                             :direction => direction)
+    if voterships.create!(:issue_id => self.id, :user_id   => user_id,
+                                                :direction => direction)
+      flash[:success] = "Vote cast!"
+    else
+      flash[:error] = "Problem casting vote"
+    end
+  end
+  
+  def cancel_vote!(user_id)
+    voterships.delete!(:issue_id => self.id, :user_id => user_id)
   end
 end

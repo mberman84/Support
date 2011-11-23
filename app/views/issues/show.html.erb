@@ -2,7 +2,12 @@
 <% if !@current_user_vote %>
 	<%= form_for(@issue.voterships.build(:issue_id => @issue.id)) do |f| %>
 	  <%= f.hidden_field :issue_id %>
-	  <%= f.submit "VoteUp" %>
+	  <%= f.submit "Vote Up" %>
+	<% end %>
+<% else %>
+	<%= form_for @current_user_vote, :method => "delete" do |f| %>
+	  <%= f.hidden_field :issue_id %>
+	  <%= f.submit "Cancel Vote" %>
 	<% end %>
 <% end %>
 
