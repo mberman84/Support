@@ -3,7 +3,7 @@ class Issue < ActiveRecord::Base
   
   has_many :users, :through => :associations
   
-  has_many :voterships
+  has_many :voterships, :dependent => :destroy
   has_many :users, :through => :voterships
   
   belongs_to :app
@@ -16,4 +16,9 @@ class Issue < ActiveRecord::Base
                           :length => { :maximum => 200 }
   validates :type, :presence => true
   validates :status, :presence => true
+  
+  def cast_vote_up!(user_id, direction)
+    voterships.create!(:issue_id => self.id, :user_id   => user_id,
+                                             :direction => direction)
+  end
 end

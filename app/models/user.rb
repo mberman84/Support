@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   has_many :associations, :dependent => :destroy
   has_many :issues, :through => :associations
   
-  has_many :voterships
+  has_many :voterships, :dependent => :destroy
   has_many :issues, :through => :voterships
 end

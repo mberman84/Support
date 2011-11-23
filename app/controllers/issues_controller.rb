@@ -5,6 +5,8 @@ class IssuesController < ApplicationController
   
   def show
      @issue = Issue.find(params[:id])
+     @votes = Votership.where(:issue_id => @issue.id)
+     @current_user_vote = @votes.where(:user_id => current_user.id)
   end
   
   def create
