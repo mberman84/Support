@@ -12,5 +12,5 @@
 </div>
 <div class="field">
 	<%= f.label :status %><br />
-	<%= f.text_field :status %>
+	<%= select(:issue, :status, Issue::STATUS, {:include_blank => true}) %>
 </div>
