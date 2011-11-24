@@ -23,6 +23,6 @@ class Issue < ActiveRecord::Base
   end
   
   def cancel_vote!(user_id)
-    voterships.delete!(:issue_id => self.id, :user_id => user_id)
+    voterships.find_by_user_id(user_id).destroy
   end
 end
