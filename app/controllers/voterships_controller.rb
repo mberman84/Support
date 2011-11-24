@@ -8,8 +8,8 @@ class VotershipsController < ApplicationController
 
   def destroy
     session[:return_to] = request.referrer
-    @issue = Issue.find(params[:votership][:issue_id])
-    @issue.cancel_vote!(current_user.id)
+    @vote = Votership.find(params[:id])
+    @vote.delete
     redirect_to session[:return_to]
   end
 end

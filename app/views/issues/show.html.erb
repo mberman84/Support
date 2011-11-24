@@ -5,10 +5,7 @@
 	  <%= f.submit "Vote Up" %>
 	<% end %>
 <% else %>
-	<%= form_for @current_user_vote, :method => "delete" do |f| %>
-	  <%= f.hidden_field :issue_id %>
-	  <%= f.submit "Cancel Vote" %>
-	<% end %>
+	 <%= button_to 'Cancel Vote', @current_user_vote, method: :delete %>
 <% end %>
 
 <%= link_to "Home", root_path %> |
