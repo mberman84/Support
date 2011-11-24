@@ -1,12 +1,13 @@
 <h2>Issues</h2>
-<ul>
-	<% @issues.each do |issue| %>
-		<li>
-			<%= link_to issue.subject, app_issue_path(issue.app, issue) %> -
-			<%= link_to issue.app.name, issue.app %>
-		</li>
-	<% end %>
-</ul>
+<% @apps.each do |app| %>
+	<%= link_to app.name, app %>
+	<ul>
+		<% app.issues.each do |issue| %>
+			<li><%= link_to issue.subject, app_issue_path(issue.app, issue) %> (<%= pluralize(issue.comments.count, "Vote") %>)</li>
+		<% end %>
+	</ul>
+<% end %>
+<br /><br />
 
 <%= link_to "Home", root_path %> |
 <%= link_to "Apps", apps_path %> |

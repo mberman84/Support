@@ -1,6 +1,7 @@
 class IssuesController < ApplicationController
   def index
     @issues = Issue.limit(10)
+    @apps = App.limit(10)
   end
   
   def show
