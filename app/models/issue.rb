@@ -2,6 +2,7 @@ class Issue < ActiveRecord::Base
   has_many :associations, :dependent => :destroy
   
   has_many :users, :through => :associations
+  has_many :comments
   
   has_many :voterships, :dependent => :destroy
   has_many :users, :through => :voterships

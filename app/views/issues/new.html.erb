@@ -1,9 +1,7 @@
 <h1>Add an issue</h1>
 <%= form_for([@app, @issue]) do |f| %>
 	<%= render 'fields', :f => f %>
-	<div class="actions">
-		<%= f.submit "Submit" %>
-	</div>
+	<%= f.submit "Submit" %>
 <% end %>
 <br /><br />
 <%= link_to "Home", root_path %> | 
