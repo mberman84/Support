@@ -25,4 +25,12 @@ class Issue < ActiveRecord::Base
   def cancel_vote!(user_id)
     voterships.find_by_user_id(user_id).destroy
   end
+  
+  def close_issue
+    update_attributes(:status => "Closed")
+  end
+  
+  def reopen_issue
+    update_attributes(:status => "Open")
+  end
 end

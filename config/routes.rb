@@ -11,6 +11,10 @@ Support::Application.routes.draw do
   resources :comments, :only => [:create, :destroy]
   resources :apps do
     resources :issues do
+      member do
+        post :close
+        post :reopen
+      end
       resources :comments, :only => [:create, :destroy]
     end
   end

@@ -28,4 +28,16 @@ class IssuesController < ApplicationController
     @issue = Issue.new
     @title = "New Issue"
   end
+  
+  def close
+    @issue = Issue.find(params[:id])
+    @issue.close_issue
+    redirect_to :back
+  end
+  
+  def reopen
+    @issue = Issue.find(params[:id])
+    @issue.reopen_issue
+    redirect_to :back
+  end
 end

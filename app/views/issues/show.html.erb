@@ -1,11 +1,19 @@
 <h2>Subject: <%= @issue.subject %></h2>
-<h4>Description: <%= @issue.description %></h4>
+Description: <%= @issue.description %><br />
+Status: <%= @issue.status %>
+<% if @issue.status == "Open" %>
+	(<%= link_to "Close Issue", close_app_issue_path, method: :post %>)
+<% else %>
+	(<%= link_to "Reopen Issue", reopen_app_issue_path, method: :post %>)
+<% end %>
+<br /><br />
+
+<%= pluralize(@votes.count, "vote") %>
 <% if !@current_user_vote %>
 	<%= button_to "Vote Up", voterships_path(:issue_id => @issue.id), method: :create %>
 <% else %>
 	<%= button_to "Cancel Vote", @current_user_vote, method: :delete %>
 <% end %>
-<%= pluralize(@votes.count, "vote") %>
 <br /><br />
 Comments--<br />
 <% @issue.comments.each do |comment| %>
