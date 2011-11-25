@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111125004717) do
+ActiveRecord::Schema.define(:version => 20111125043036) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20111125004717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "app_id"
+    t.integer  "owner_id"
   end
 
   create_table "publishers", :force => true do |t|

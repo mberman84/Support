@@ -1,12 +1,8 @@
 class Issue < ActiveRecord::Base
-  has_many :associations, :dependent => :destroy
-  
-  has_many :users, :through => :associations
   has_many :comments
-  
   has_many :voterships, :dependent => :destroy
   has_many :users, :through => :voterships
-  
+  belongs_to :owner, class_name: "User"
   belongs_to :app
   
   STATUS = ['Open', 'Closed']
