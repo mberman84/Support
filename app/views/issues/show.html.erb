@@ -1,4 +1,5 @@
-<h2><%= @issue.subject %></h2>
+<h2>Subject: <%= @issue.subject %></h2>
+<h4>Description: <%= @issue.description %></h4>
 <% if !@current_user_vote %>
 	<%= button_to "Vote Up", voterships_path(:issue_id => @issue.id), method: :create %>
 <% else %>

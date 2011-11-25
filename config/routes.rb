@@ -10,7 +10,9 @@ Support::Application.routes.draw do
   resources :voterships, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
   resources :apps do
-    resources :issues
+    resources :issues do
+      resources :comments, :only => [:create, :destroy]
+    end
   end
   
   root :to => "home#index"
