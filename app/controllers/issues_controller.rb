@@ -15,6 +15,7 @@ class IssuesController < ApplicationController
     @app = App.find(params[:app_id])
     @issue = Issue.new(params[:issue])
     @issue.app_id = params[:app_id]
+    debugger
     if @issue.save
       flash[:success] = "Issue added!"
       redirect_to app_issue_path(@app, @issue)

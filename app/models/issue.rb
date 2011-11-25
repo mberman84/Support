@@ -15,7 +15,6 @@ class Issue < ActiveRecord::Base
                       :length => { :maximum => 50 }
   validates :description, :presence => true,
                           :length => { :maximum => 200 }
-  validates :type, :presence => true
   validates :status, :presence => true
   
   def cast_vote_up!(user_id, direction)
