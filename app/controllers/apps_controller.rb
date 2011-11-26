@@ -14,17 +14,16 @@ class AppsController < ApplicationController
     @app = App.new(params[:app])
     @app.owner = current_user
     if @app.save
-      flash[:success] = "App created!"
-      redirect_to @app
+      redirect_to @app, :notice => "App created!"
     else
-      render 'new'
+      render 'new', :notice => "Could not create app"
     end
   end
   
   def destroy
     @app = App.find(params[:id])
     @app.destroy
-    redirect_to issues_path
+    redirect_to issues_path, :notice => "App deleted"
   end
   
   def new
@@ -36,6 +35,6 @@ class AppsController < ApplicationController
     
     def is_owner
       @app = App.find(params[:id])
-      redirect_to :back unless @app.is_owner?(current_user)
+      redirect_to :back, :notice => "You do not have permission to do that" unless @app.is_owner?(current_user)
     end
 end

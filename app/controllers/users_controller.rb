@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
     else
-      render :new
+      render :new, :notice => "Could not create user"
     end
   end
 end

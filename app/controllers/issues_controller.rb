@@ -23,6 +23,7 @@ class IssuesController < ApplicationController
       flash[:success] = "Issue added!"
       redirect_to app_issue_path(@app, @issue)
     else
+      flash[:failure] = "Could not add issue"
       render 'new'
     end
   end
@@ -30,6 +31,7 @@ class IssuesController < ApplicationController
   def destroy
     @issue = Issue.find(params[:id])
     @issue.destroy
+    flash[:success] = "Issue deleted"
     redirect_to issues_path
   end
   
@@ -42,19 +44,19 @@ class IssuesController < ApplicationController
   def close
     @issue = Issue.find(params[:id])
     @issue.close_issue
-    redirect_to :back
+    redirect_to :back, :notice => "Issue closed"
   end
   
   def reopen
     @issue = Issue.find(params[:id])
     @issue.reopen_issue
-    redirect_to :back
+    redirect_to :back, :notice => "Issue reopened"
   end
   
   private
   
     def is_owner
       @issue = Issue.find(params[:id])
-      redirect_to :back unless @issue.is_owner?(current_user)
+      redirect_to :back, :notice => "You do not have permission to do that" unless @issue.is_owner?(current_user)
     end
 end
