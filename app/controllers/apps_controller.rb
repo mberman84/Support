@@ -35,6 +35,7 @@ class AppsController < ApplicationController
     
     def is_owner
       @app = App.find(params[:id])
-      redirect_to :back, :notice => "You do not have permission to do that" unless @app.is_owner?(current_user)
+      redirect_to :back, :notice => "You do not have permission to do that"
+        unless @app.is_owner?(current_user)
     end
 end

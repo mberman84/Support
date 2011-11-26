@@ -15,9 +15,9 @@ Status: <%= @issue.status %>
 
 <%= pluralize(@votes.count, "vote") %>
 <% if !@current_user_vote %>
-	<%= button_to "Vote Up", voterships_path(:issue_id => @issue.id), method: :create %>
+	<%= link_to "Vote Up", voterships_path(:issue_id => @issue.id), method: :create %>
 <% else %>
-	<%= button_to "Cancel Vote", @current_user_vote, method: :delete %>
+	<%= link_to "Cancel Vote", @current_user_vote, method: :delete %>
 <% end %>
 <br /><br />
 Comments--<br />
