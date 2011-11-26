@@ -7,6 +7,9 @@ Status: <%= @issue.status %>
 <% elsif @issue.is_owner?(current_user) %>
 	(<%= link_to "Reopen Issue", reopen_app_issue_path, method: :post %>)
 <% end %>
+<% if @issue.is_owner?(current_user) %>
+	(<%= link_to "Delete Issue", app_issue_path, method: :delete %>)
+<% end %>
 <br /><br />
 
 <%= pluralize(@votes.count, "vote") %>

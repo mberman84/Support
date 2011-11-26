@@ -27,6 +27,12 @@ class IssuesController < ApplicationController
     end
   end
   
+  def destroy
+    @issue = Issue.find(params[:id])
+    @issue.destroy
+    redirect_to issues_path
+  end
+  
   def new
     @app = App.find(params[:app_id])
     @issue = Issue.new
