@@ -1,9 +1,10 @@
 <h2>Subject: <%= @issue.subject %></h2>
 Description: <%= @issue.description %><br />
 Status: <%= @issue.status %>
-<% if @issue.status == "Open" %>
+
+<% if @issue.status == "Open" && @issue.is_owner?(current_user) %>
 	(<%= link_to "Close Issue", close_app_issue_path, method: :post %>)
-<% else %>
+<% elsif @issue.is_owner?(current_user) %>
 	(<%= link_to "Reopen Issue", reopen_app_issue_path, method: :post %>)
 <% end %>
 <br /><br />

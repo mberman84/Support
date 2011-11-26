@@ -11,4 +11,8 @@ class App < ActiveRecord::Base
                           :length => { :maximum => 200 }
   validates :version, :presence => true
   validates :platform, :presence => true
+  
+  def is_owner?(user)
+    owner == user
+  end
 end

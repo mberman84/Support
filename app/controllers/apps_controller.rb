@@ -1,4 +1,8 @@
 class AppsController < ApplicationController
+  #before_filter :is_owner
+  before_filter :is_signed_in, :only => [:create,
+                                         :new]
+  
   def index
     @apps = App.limit(10)
   end
@@ -22,4 +26,19 @@ class AppsController < ApplicationController
     @app = App.new
     @title = "New App"
   end
+  
+  private
+    
+    def is_owner
+      @app = App.find(params[:id])
+      redirect_to :back unless @app.owner == current_user
+    end
+
+    def is_signed_in
+      redirect_to login_path unless signed_in?
+    end
+    
+    def signed_in?
+      !current_user.nil?
+    end
 end

@@ -1,4 +1,7 @@
 class IssuesController < ApplicationController
+  before_filter :is_signed_in, :only => [:create, :new, :close]
+  before_filter :is_owner, :only => [:close, :reopen]
+  
   def index
     @issues = Issue.limit(10)
     @apps = App.limit(10)
@@ -15,7 +18,7 @@ class IssuesController < ApplicationController
     @app = App.find(params[:app_id])
     @issue = Issue.new(params[:issue])
     @issue.app_id = params[:app_id]
-    @issue.owner = current_user
+    @issue.owner = @app.owner
     if @issue.save
       flash[:success] = "Issue added!"
       redirect_to app_issue_path(@app, @issue)
@@ -41,4 +44,19 @@ class IssuesController < ApplicationController
     @issue.reopen_issue
     redirect_to :back
   end
+  
+  private
+  
+    def is_owner
+      @issue = Issue.find(params[:id])
+      redirect_to :back unless @issue.owner == current_user
+    end
+    
+    def is_signed_in
+      redirect_to login_path unless signed_in?
+    end
+    
+    def signed_in?
+      !current_user.nil?
+    end
 end

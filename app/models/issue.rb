@@ -29,4 +29,8 @@ class Issue < ActiveRecord::Base
   def reopen_issue
     update_attributes(:status => "Open")
   end
+  
+  def is_owner?(user)
+    owner == user
+  end
 end
