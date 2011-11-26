@@ -1,7 +1,6 @@
 class AppsController < ApplicationController
-  #before_filter :is_owner
-  before_filter :is_signed_in, :only => [:create,
-                                         :new]
+  before_filter :is_signed_in, :only => [:create, :new]
+  before_filter :is_owner, :only => [:destroy]
   
   def index
     @apps = App.limit(10)
@@ -37,6 +36,6 @@ class AppsController < ApplicationController
     
     def is_owner
       @app = App.find(params[:id])
-      redirect_to :back unless @app.owner == current_user
+      redirect_to :back unless @app.is_owner?(current_user)
     end
 end

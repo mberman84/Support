@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
-  before_filter :is_signed_in, :only => [:create, :new, :close]
-  before_filter :is_owner, :only => [:close, :reopen]
+  before_filter :is_signed_in, :only => [:create, :new]
+  before_filter :is_owner, :only => [:close, :reopen, :destroy, :close]
   
   def index
     @issues = Issue.limit(10)
@@ -55,6 +55,6 @@ class IssuesController < ApplicationController
   
     def is_owner
       @issue = Issue.find(params[:id])
-      redirect_to :back unless @issue.owner == current_user
+      redirect_to :back unless @issue.is_owner?(current_user)
     end
 end
