@@ -20,19 +20,16 @@ class IssuesController < ApplicationController
     @issue.app_id = params[:app_id]
     @issue.owner = @app.owner
     if @issue.save
-      flash[:success] = "Issue added!"
-      redirect_to app_issue_path(@app, @issue)
+      redirect_to app_issue_path(@app, @issue), :notice => "Issue added!"
     else
-      flash[:failure] = "Could not add issue"
-      render 'new'
+      render 'new', :notice => "Could not add issue"
     end
   end
   
   def destroy
     @issue = Issue.find(params[:id])
     @issue.destroy
-    flash[:success] = "Issue deleted"
-    redirect_to issues_path
+    redirect_to issues_path, :notice => "Issue deleted"
   end
   
   def new
