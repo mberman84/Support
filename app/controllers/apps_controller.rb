@@ -22,6 +22,12 @@ class AppsController < ApplicationController
     end
   end
   
+  def destroy
+    @app = App.find(params[:id])
+    @app.destroy
+    redirect_to issues_path
+  end
+  
   def new
     @app = App.new
     @title = "New App"
@@ -32,13 +38,5 @@ class AppsController < ApplicationController
     def is_owner
       @app = App.find(params[:id])
       redirect_to :back unless @app.owner == current_user
-    end
-
-    def is_signed_in
-      redirect_to login_path unless signed_in?
-    end
-    
-    def signed_in?
-      !current_user.nil?
     end
 end

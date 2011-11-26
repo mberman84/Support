@@ -57,12 +57,4 @@ class IssuesController < ApplicationController
       @issue = Issue.find(params[:id])
       redirect_to :back unless @issue.owner == current_user
     end
-    
-    def is_signed_in
-      redirect_to login_path unless signed_in?
-    end
-    
-    def signed_in?
-      !current_user.nil?
-    end
 end
