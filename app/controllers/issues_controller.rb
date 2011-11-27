@@ -3,8 +3,8 @@ class IssuesController < ApplicationController
   before_filter :is_owner, :only => [:close, :reopen, :destroy, :close, :update, :edit]
   
   def index
-    @issues = Issue.limit(10)
-    @apps = App.limit(10)
+    @issues = Issue.limit(5)
+    @apps = App.paginate(:page => params[:page], :per_page => 10)
   end
   
   def show
