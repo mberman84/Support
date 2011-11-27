@@ -1,7 +1,9 @@
 <h1>Home#index</h1>
 <ul>
 <% @issues.each do |issue| %>
-	<li><%= issue.subject %> - <%= issue.comments.count %></li>
+	<li><%= link_to issue.subject, app_issue_path(issue.app, issue) %> - 
+		(Comments - <%= issue.comments.count %>) -
+		(Votes - <%= issue.voterships.count %>)</li>
 <% end %>
 </ul>
 
