@@ -1,0 +1,6 @@
+<h2>Edit Issue</h2>
+
+<%= form_for([@app, @issue]) do |f| %>
+	<%= render 'edit_fields', :f => f %>
+	<%= f.submit "Submit" %>
+<% end %>

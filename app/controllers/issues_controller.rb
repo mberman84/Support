@@ -19,10 +19,26 @@ class IssuesController < ApplicationController
     @issue = Issue.new(params[:issue])
     @issue.app_id = params[:app_id]
     @issue.owner = @app.owner
+    @issue.status = "Open"
     if @issue.save
       redirect_to app_issue_path(@app, @issue), :notice => "Issue added!"
     else
       render 'new', :notice => "Could not add issue"
+    end
+  end
+  
+  def edit
+    @app = App.find(params[:app_id])
+    @issue = Issue.find(params[:id])
+    @title = "Edit issue"
+  end
+  
+  def update
+    @issue = Issue.find(params[:id])
+    if @issue.update_attributes(params[:issue])
+      redirect_to app_issues_path(@issue), :notice => "Issue updated!"
+    else
+      render 'edit', :notice => "Couldn't update issue"
     end
   end
   
