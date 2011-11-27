@@ -1,6 +1,6 @@
 <h2>Issues</h2>
 <% @apps.each do |app| %>
-	<%= link_to app.name, app %>
+	<%= link_to app.name, app %> - <%= link_to "(Add Issue)", new_app_issue_path(app) %>
 	<ul>
 		<% app.issues.each do |issue| %>
 			<li><%= link_to issue.subject, app_issue_path(issue.app, issue) %> (<%= pluralize(issue.voterships.count, "Vote") %>) (Status: <%= issue.status %>)</li>
