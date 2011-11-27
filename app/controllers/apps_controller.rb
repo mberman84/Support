@@ -3,7 +3,8 @@ class AppsController < ApplicationController
   before_filter :is_owner, :only => [:destroy]
   
   def index
-    @apps = App.limit(10)
+    #@apps = App.limit(10)
+    @apps = App.paginate(:page => params[:page], :per_page => 15)
   end
   
   def show
