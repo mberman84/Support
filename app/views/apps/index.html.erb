@@ -1,7 +1,7 @@
 <h2>Apps</h2>
 <ul>
 	<% @apps.each do |app| %>
-		<li><%= link_to app.name, app %> (<%= link_to "Issues", app_issues_url(app) %>)</li>
+		<li><%= link_to app.name, app %></li>
 	<% end %>
 </ul>
 
