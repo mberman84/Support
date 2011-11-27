@@ -8,6 +8,7 @@ class AppsController < ApplicationController
   
   def show
     @app = App.find(params[:id])
+    @issues = @app.issues.paginate(:page => params[:page], :per_page => 10)
   end
   
   def create
