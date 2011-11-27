@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
-  before_filter :is_signed_in, :only => [:create, :new]
-  before_filter :is_owner, :only => [:close, :reopen, :destroy, :close]
+  before_filter :is_signed_in, :only => [:create, :new, :edit, :update]
+  before_filter :is_owner, :only => [:close, :reopen, :destroy, :close, :update, :edit]
   
   def index
     @issues = Issue.limit(10)

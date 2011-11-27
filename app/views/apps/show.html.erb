@@ -1,6 +1,7 @@
 <h2><%= @app.name %></h2>
 <% if @app.is_owner?(current_user) %>
 	(<%= link_to "Delete App", app_path, method: :delete %>)
+	(<%= link_to "Edit App", edit_app_path %>)
 <% end %>
 <br /><br />
 

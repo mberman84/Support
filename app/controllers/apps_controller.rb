@@ -26,6 +26,20 @@ class AppsController < ApplicationController
     redirect_to issues_path, :notice => "App deleted"
   end
   
+  def edit
+    @app = App.find(params[:id])
+    @title = "Edit app"
+  end
+  
+  def update
+    @app = App.find(params[:id])
+    if @app.update_attributes(params[:app])
+      redirect_to app_path(@app), :notice => "App updated!"
+    else
+      render 'edit', :notice => "Couldn't update app"
+    end
+  end
+  
   def new
     @app = App.new
     @title = "New App"
