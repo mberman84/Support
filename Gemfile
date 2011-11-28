@@ -4,6 +4,8 @@ gem 'rails', '3.1.0'
 gem 'sorcery'
 gem 'heroku'
 gem 'will_paginate'
+gem 'activeadmin'
+gem "meta_search", '>= 1.1.0.pre'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
