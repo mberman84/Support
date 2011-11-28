@@ -1,3 +1,3 @@
 class Publisher < ActiveRecord::Base
-  has_many :apps
+  #has_many :apps
 end

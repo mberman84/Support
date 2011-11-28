@@ -4,16 +4,18 @@ ActiveAdmin::Dashboards.build do
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
   
-  # == Simple Dashboard Section
-  # Here is an example of a simple dashboard section
-  #
-  #   section "Recent Posts" do
-  #     ul do
-  #       Post.recent(5).collect do |post|
-  #         li link_to(post.title, admin_post_path(post))
-  #       end
-  #     end
-  #   end
+  section "Recent Issues" do
+    table_for Issue.order("created_at desc").limit(10) do
+      column :subject do |issue|
+        link_to issue.subject, [:admin, issue]
+      end
+      column :created_at
+      #column :app do |app|
+      #  link_to app.name, [:admin, app]
+      #end
+    end
+    strong { link_to "View All Issues", admin_issues_path }
+  end
   
   # == Render Partial Section
   # The block is rendered within the context of the view, so you can
