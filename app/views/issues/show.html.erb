@@ -23,7 +23,8 @@ Status: <%= @issue.status %>
 <br /><br />
 Comments--<br />
 <% @issue.comments.each do |comment| %>
-<%= comment.content %> (user_id: <%= comment.user_id %>)<br />
+<%= comment.content %> (user_id: <%= comment.user_id %>) 
+(<%= link_to "X", comment, method: :delete %>)<br />
 <% end %>
 
 <br /><br />
