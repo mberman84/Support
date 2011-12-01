@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     #                      :limit => "10" )
     @issues = Issue.find( :all, 
                           :order => "count(voterships.id) DESC", 
-                          :joins => "inner join voterships on voterships.issue_id = issues.id", 
+                          :joins => "left join voterships on voterships.issue_id = issues.id", 
                           :group => "issues.id",
                           :limit => "10" )
   end

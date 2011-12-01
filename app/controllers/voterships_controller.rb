@@ -1,4 +1,6 @@
 class VotershipsController < ApplicationController
+  before_filter :is_signed_in, :only => [:create, :destroy]
+  
   def create
     @issue = Issue.find(params[:issue_id])
     @issue.cast_vote_up!(current_user.id, "up")

@@ -10,8 +10,8 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(params[:id])
     @votes = Votership.where(:issue_id => @issue.id)
-    @current_user_vote = @votes.where(:user_id => current_user.id).first
     @comment = Comment.new(:issue_id => @issue.id)
+    @current_user_vote = @votes.where(:user_id => current_user.id).first unless !current_user
   end
   
   def create
@@ -70,6 +70,6 @@ class IssuesController < ApplicationController
   
     def is_owner
       @issue = Issue.find(params[:id])
-      redirect_to :back, :notice => "You do not have permission to do that" unless @issue.is_owner?(current_user)
+      redirect_to :back, :notice => "You do not have permission to do that." unless @issue.is_owner?(current_user)
     end
 end

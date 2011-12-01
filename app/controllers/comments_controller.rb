@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :is_signed_in, :only => [:create]
+  
   def create
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
