@@ -5,6 +5,7 @@ gem 'sorcery'
 gem 'heroku'
 gem 'will_paginate'
 gem "pg", :group => :production
+gem 'taps'
 
 
 # Bundle edge Rails instead:
