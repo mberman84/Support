@@ -7,6 +7,7 @@ gem 'will_paginate'
 gem "pg", :group => :production
 gem 'sqlite3'
 gem 'acts_as_api'
+gem 'taps'
 
 
 # Bundle edge Rails instead:
@@ -31,7 +32,6 @@ gem 'jquery-rails'
 group :development do
   # To use debugger
   gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'taps'
 end
 
 group :test do
