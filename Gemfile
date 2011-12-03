@@ -5,13 +5,12 @@ gem 'sorcery'
 gem 'heroku'
 gem 'will_paginate'
 gem "pg", :group => :production
+gem 'sqlite3'
+gem 'acts_as_api'
 
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
 
 # Gems used only for assets and not required
 # in production environments by default.

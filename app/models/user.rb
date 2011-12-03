@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
+  acts_as_api
   
   attr_accessible :email, :password, :password_confirmation
 
@@ -11,4 +12,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :voterships, :dependent => :destroy
   has_many :issues, :through => :voterships
+  
+  api_accessible :name_only do |template|
+    template.add :name
+  end
 end

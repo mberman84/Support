@@ -30,6 +30,10 @@ GEM
       activesupport (= 3.1.0)
     activesupport (3.1.0)
       multi_json (~> 1.0)
+    acts_as_api (0.3.11)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      rack (>= 1.1.0)
     addressable (2.2.6)
     ansi (1.4.1)
     archive-tar-minitar (0.5.2)
@@ -164,6 +168,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_api
   coffee-rails (~> 3.1.0)
   heroku
   jquery-rails
