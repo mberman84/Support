@@ -13,6 +13,19 @@ class Issue < ActiveRecord::Base
                           :length => { :maximum => 200 }
   validates :status, :presence => true
   
+  acts_as_api
+  
+  api_accessible :default do |template|
+    template.add :subject
+    template.add :description
+    template.add :status
+    template.add :created_at
+    template.add :updated_at
+    template.add :app_id
+    template.add :owner_id
+    template.add :comments
+  end
+  
   def cast_vote_up!(user_id, direction)
     voterships.create!(:issue_id => self.id, :user_id   => user_id,
                                                 :direction => direction)

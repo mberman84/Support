@@ -14,8 +14,15 @@ class App < ActiveRecord::Base
   validates :version, :presence => true
   validates :platform, :presence => true
   
-  api_accessible :name_only do |template|
+  api_accessible :default do |template|
     template.add :name
+    template.add :description
+    template.add :version
+    template.add :platform
+    template.add :created_at
+    template.add :updated_at
+    template.add :owner_id
+    template.add :issues
   end
   
   def is_owner?(user)

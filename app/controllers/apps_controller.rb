@@ -11,8 +11,8 @@ class AppsController < ApplicationController
     @issues = @app.issues.paginate(:page => params[:page], :per_page => 10)
     
     respond_to do |format|
-      format.xml  { render_for_api :name_only, :xml  => @app }
-      format.json { render_for_api :name_only, :json => @app }
+      format.xml  { render_for_api :default, :xml  => @app }
+      format.json { render_for_api :default, :json => @app }
       format.html
     end
   end
