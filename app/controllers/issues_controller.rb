@@ -5,6 +5,12 @@ class IssuesController < ApplicationController
   def index
     @issues = Issue.limit(5)
     @apps = App.paginate(:page => params[:page], :per_page => 10)
+    
+    respond_to do |format|
+      format.xml  { render_for_api :default, :xml  => @issues }
+      format.json { render_for_api :default, :json => @issues }
+      format.html
+    end
   end
   
   def show
@@ -12,6 +18,12 @@ class IssuesController < ApplicationController
     @votes = Votership.where(:issue_id => @issue.id)
     @comment = Comment.new(:issue_id => @issue.id)
     @current_user_vote = @votes.where(:user_id => current_user.id).first unless !current_user
+    
+    respond_to do |format|
+      format.xml  { render_for_api :default, :xml  => @issue }
+      format.json { render_for_api :default, :json => @issue }
+      format.html
+    end
   end
   
   def create
