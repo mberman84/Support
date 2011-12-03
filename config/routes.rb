@@ -7,7 +7,6 @@ Support::Application.routes.draw do
   
   resources :users
   resources :sessions
-  resources :voterships, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
   resources :apps do
     resources :issues do
@@ -15,6 +14,7 @@ Support::Application.routes.draw do
         post :close
         post :reopen
       end
+      resources :voterships, :only => [:create, :destroy]
       resources :comments, :only => [:create, :destroy]
     end
   end
