@@ -24,6 +24,7 @@ class Issue < ActiveRecord::Base
     template.add :app_id
     template.add :owner_id
     template.add :comments
+    template.add :voterships
   end
   
   def cast_vote_up!(user_id, direction)

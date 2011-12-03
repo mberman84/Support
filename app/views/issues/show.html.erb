@@ -14,7 +14,7 @@ Status: <%= @issue.status %>
 <% end %>
 <br /><br />
 
-<%= pluralize(@votes.count, "vote") %>
+<%= pluralize(@voterships.count, "vote") %>
 <% if !@current_user_vote %>
 	<%= link_to "Vote Up", app_issue_voterships_path(@issue.app_id, @issue.id), method: :create %>
 <% else %>

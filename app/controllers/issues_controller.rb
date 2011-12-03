@@ -15,9 +15,10 @@ class IssuesController < ApplicationController
   
   def show
     @issue = Issue.find(params[:id])
-    @votes = Votership.where(:issue_id => @issue.id)
+    #@votes = Votership.where(:issue_id => @issue.id)
+    @voterships = @issue.voterships
     @comment = Comment.new(:issue_id => @issue.id)
-    @current_user_vote = @votes.where(:user_id => current_user.id).first unless !current_user
+    @current_user_vote = @voterships.where(:user_id => current_user.id).first unless !current_user
     
     respond_to do |format|
       format.xml  { render_for_api :default, :xml  => @issue }
