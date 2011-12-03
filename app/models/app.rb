@@ -3,6 +3,8 @@ class App < ActiveRecord::Base
   has_many :issues
   belongs_to :owner, class_name: "User"
   
+  acts_as_api
+  
   PLATFORM = ['iOS', 'Android']
   
   validates :name, :presence => true,
@@ -11,6 +13,10 @@ class App < ActiveRecord::Base
                           :length => { :maximum => 200 }
   validates :version, :presence => true
   validates :platform, :presence => true
+  
+  api_accessible :name_only do |template|
+    template.add :name
+  end
   
   def is_owner?(user)
     owner == user
