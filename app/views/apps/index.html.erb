@@ -9,5 +9,7 @@
 
 <%= link_to "Home", root_path %> | 
 <%= link_to "Apps", apps_path %> |
-<%= link_to "Issues", issues_path %> |
-<%= link_to "New App", new_app_path %>
+<%= link_to "Issues", issues_path %>
+<% if current_user && current_user.is_publisher %>
+	 | <%= link_to "New App", new_app_path %>
+<% end %>

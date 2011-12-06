@@ -19,7 +19,6 @@ class IssuesController < ApplicationController
     @voterships = @issue.voterships
     @comment = Comment.new(:issue_id => @issue.id)
     @current_user_vote = @voterships.where(:user_id => current_user.id).first unless !current_user
-    
     respond_to do |format|
       format.xml  { render_for_api :default, :xml  => @issue }
       format.json { render_for_api :default, :json => @issue }

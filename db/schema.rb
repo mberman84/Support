@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206062646) do
+ActiveRecord::Schema.define(:version => 20111206062946) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -74,18 +74,8 @@ ActiveRecord::Schema.define(:version => 20111206062646) do
     t.integer   "owner_id"
   end
 
-  create_table "users", :force => true do |t|
-    t.string    "email"
-    t.string    "crypted_password"
-    t.string    "salt"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "remember_me_token"
-    t.timestamp "remember_me_token_expires_at"
-    t.string    "name"
-  end
-
-  add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'bool' for column 'is_publisher'
 
   create_table "voterships", :force => true do |t|
     t.integer   "issue_id"
